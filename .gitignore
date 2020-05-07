@@ -1,0 +1,11 @@
+/resources/keys.properties
+keys.properties
+
+*.cmd
+*.iml
+mvnw
+.idea
+.mvn
+target
+target/*
+HELP.md

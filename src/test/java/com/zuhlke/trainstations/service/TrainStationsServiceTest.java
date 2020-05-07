@@ -1,8 +1,7 @@
 package com.zuhlke.trainstations.service;
 
-import com.zuhlke.trainstations.repository.StationDetailsRepository;
-import com.zuhlke.trainstations.service.TrainStationDBService;
 import com.zuhlke.trainstations.model.StationDetails;
+import com.zuhlke.trainstations.repository.StationDetailsRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,8 +12,10 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
