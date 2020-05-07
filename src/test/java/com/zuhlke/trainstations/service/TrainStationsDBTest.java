@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class) //to run with JUnit 5 (for parameterized tests)
-public class TrainStationsServiceTest {
+public class TrainStationsDBTest {
 
     @TestConfiguration
     static class EmployeeServiceImplTestContextConfiguration {
