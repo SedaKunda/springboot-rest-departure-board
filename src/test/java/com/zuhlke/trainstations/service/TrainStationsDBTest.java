@@ -13,7 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,8 +41,6 @@ public class TrainStationsDBTest {
     String stationName = "Some station";
     StationDetails station1 = new StationDetails("", "Wembley", 0.0, 0.0, 0, "", "WMBY");
     StationDetails station2 = new StationDetails("", stationName, 0.0, 0.0, 0, "", "WddMBY");
-    List<StationDetails> stationDetailsList1 = new ArrayList<>();
-    List<StationDetails> stationDetailsList2 = new ArrayList<>();
 
     @ParameterizedTest
     @ValueSource(longs = {1, 3, 5, 15, Long.MAX_VALUE})
@@ -56,7 +54,7 @@ public class TrainStationsDBTest {
     public void canSaveAStation() {
         //in this test we use mocking instead of testConfig because we can only test whether method is invoked
         //correctly. It is a void method so not much can be tested here
-        stationDetailsList1.add(station1);
+        List<StationDetails> stationDetailsList1 = Arrays.asList(station1);
         TrainStationDBService trainStationDBService = mock(TrainStationDBService.class);
         trainStationDBService.saveStationDetails(stationDetailsList1);
         verify(trainStationDBService, only()).saveStationDetails(stationDetailsList1);
@@ -64,8 +62,7 @@ public class TrainStationsDBTest {
 
     @Test
     public void canGetAllStationDetails() {
-        stationDetailsList1.add(station1);
-        stationDetailsList1.add(station2);
+        List<StationDetails> stationDetailsList1 = Arrays.asList(station1, station2);
         Mockito.when(detailsRepository.findAll()).thenReturn(stationDetailsList1);
         List<StationDetails> allStations = trainStationService.getAllStationDetails();
         assertEquals(allStations.size(), 2);
@@ -73,9 +70,7 @@ public class TrainStationsDBTest {
 
     @Test
     public void canGetStationDetailsByCode() {
-        stationDetailsList1.add(station1);
-        stationDetailsList1.add(station2);
-        stationDetailsList2.add(station2);
+        List<StationDetails> stationDetailsList2 = Arrays.asList(station2);
         Mockito.when(detailsRepository.findByAtcocode(station2.getAtcocode())).thenReturn(stationDetailsList2);
         List<StationDetails> selectedStations = trainStationService.getStationDetailsByCode(station2.getAtcocode());
         assertEquals(selectedStations.size(), 1);
