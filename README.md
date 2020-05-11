@@ -14,6 +14,7 @@ Data is obtained from the [TransportAPI](https://www.transportapi.com/)
 - Junit
 - Mockito
 - TDD approach
+- Maven
 
 # Setup
 - Generate your own APP_ID and APP_KEY from [TransportAPI](https://www.transportapi.com/).
